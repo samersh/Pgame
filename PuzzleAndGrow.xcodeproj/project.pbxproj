@@ -25,6 +25,7 @@
 		A9A4DE7D2B5A5C7F007C9C4A /* GardenState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9A4DE7C2B5A5C7F007C9C4A /* GardenState.swift */; };
 		A9A4DE842B5A5C7F007C9C4A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9A4DE822B5A5C7F007C9C4A /* LaunchScreen.storyboard */; };
 		A9A4DE862B5A5C7F007C9C4A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9A4DE852B5A5C7F007C9C4A /* Assets.xcassets */; };
+		A9A4DEA02B5A5C7F007C9C4A /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = A9A4DE9F2B5A5C7F007C9C4A /* GoogleMobileAds */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,7 +47,7 @@
 		A9A4DE7A2B5A5C7F007C9C4A /* PuzzleState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleState.swift; sourceTree = "<group>"; };
 		A9A4DE7C2B5A5C7F007C9C4A /* GardenState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardenState.swift; sourceTree = "<group>"; };
 		A9A4DE802B5A5C7F007C9C4A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A9A4DE822B5A5C7F007C9C4A /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A9A4DE832B5A5C7F007C9C4A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A9A4DE852B5A5C7F007C9C4A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -55,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9A4DEA02B5A5C7F007C9C4A /* GoogleMobileAds in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -143,6 +145,9 @@
 			dependencies = (
 			);
 			name = PuzzleAndGrow;
+			packageProductDependencies = (
+				A9A4DE9F2B5A5C7F007C9C4A /* GoogleMobileAds */,
+			);
 			productName = PuzzleAndGrow;
 			productReference = A9A4DE562B5A5C7F007C9C4A /* PuzzleAndGrow.app */;
 			productType = "com.apple.product-type.application";
@@ -171,6 +176,9 @@
 				Base,
 			);
 			mainGroup = A9A4DE532B5A5C7F007C9C4A;
+			packageReferences = (
+				A9A4DE9E2B5A5C7F007C9C4A /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
+			);
 			productRefGroup = A9A4DE572B5A5C7F007C9C4A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -217,6 +225,17 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A9A4DE822B5A5C7F007C9C4A /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A9A4DE832B5A5C7F007C9C4A /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		A9A4DE872B5A5C7F007C9C4A /* Debug */ = {
@@ -418,6 +437,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A9A4DE9E2B5A5C7F007C9C4A /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/googleads/swift-package-manager-google-mobile-ads.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductReference section */
+		A9A4DE9F2B5A5C7F007C9C4A /* GoogleMobileAds */ = {
+			isa = XCSwiftPackageProductReference;
+			package = A9A4DE9E2B5A5C7F007C9C4A /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */;
+			productName = GoogleMobileAds;
+		};
+/* End XCSwiftPackageProductReference section */
 	};
 	rootObject = A9A4DE512B5A5C7F007C9C4A /* Project object */;
 }
