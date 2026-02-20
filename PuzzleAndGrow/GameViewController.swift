@@ -6,36 +6,35 @@ class GameViewController: UIViewController {
 
     var gameManager: GameManager!
     var skView: SKView!
+    private var hasStartedGame = false
 
     override func loadView() {
         // Create SKView as the main view
         skView = SKView()
+        skView.backgroundColor = .white
         self.view = skView
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         gameManager = GameManager(gameViewController: self)
     }
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
 
-        // Only present scene once we have proper bounds
-        if skView.scene == nil && view.bounds.size != .zero {
-            // Create scene programmatically with the view's size
-            let scene = MainMenuScene(size: view.bounds.size)
-            scene.scaleMode = .resizeFill
-            scene.gameManager = gameManager
-
-            skView.presentScene(scene)
-            skView.ignoresSiblingOrder = true
+        // Start the game once we have proper bounds
+        if !hasStartedGame && view.bounds.size.width > 0 && view.bounds.size.height > 0 {
+            hasStartedGame = true
 
             #if DEBUG
             skView.showsFPS = true
             skView.showsNodeCount = true
             #endif
+            skView.ignoresSiblingOrder = true
+
+            // Now start the game - this will present the MainMenuScene
+            gameManager.startGame()
         }
     }
 

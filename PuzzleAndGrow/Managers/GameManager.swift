@@ -1,11 +1,10 @@
-
 import GameplayKit
 
 class GameManager {
-    
+
     weak var gameViewController: GameViewController?
     var zenCoins: Int = 0
-    
+
     lazy var stateMachine: GKStateMachine = {
         return GKStateMachine(states: [
             MainMenuState(gameManager: self),
@@ -13,12 +12,16 @@ class GameManager {
             GardenState(gameManager: self)
         ])
     }()
-    
+
     init(gameViewController: GameViewController) {
         self.gameViewController = gameViewController
+        // Don't enter state here - wait for view to be ready
+    }
+
+    func startGame() {
         stateMachine.enter(MainMenuState.self)
     }
-    
+
     func addZenCoins(_ amount: Int) {
         zenCoins += amount
     }
