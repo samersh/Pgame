@@ -1,5 +1,3 @@
-
-
 import UIKit
 import SpriteKit
 import GameplayKit
@@ -7,24 +5,37 @@ import GameplayKit
 class GameViewController: UIViewController {
 
     var gameManager: GameManager!
+    var skView: SKView!
+
+    override func loadView() {
+        // Create SKView as the main view
+        skView = SKView()
+        self.view = skView
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         gameManager = GameManager(gameViewController: self)
-        
-        if let view = self.view as! SKView? {
-            
-            if let scene = MainMenuScene(fileNamed: "MainMenuScene") {
-                scene.scaleMode = .aspectFill
-                scene.gameManager = gameManager
-                view.presentScene(scene)
-            }
-            
-            view.ignoresSiblingOrder = true
-            
-            view.showsFPS = true
-            view.showsNodeCount = true
+    }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+
+        // Only present scene once we have proper bounds
+        if skView.scene == nil && view.bounds.size != .zero {
+            // Create scene programmatically with the view's size
+            let scene = MainMenuScene(size: view.bounds.size)
+            scene.scaleMode = .resizeFill
+            scene.gameManager = gameManager
+
+            skView.presentScene(scene)
+            skView.ignoresSiblingOrder = true
+
+            #if DEBUG
+            skView.showsFPS = true
+            skView.showsNodeCount = true
+            #endif
         }
     }
 
