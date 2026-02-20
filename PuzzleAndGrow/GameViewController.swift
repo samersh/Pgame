@@ -9,21 +9,29 @@ class GameViewController: UIViewController {
     private var hasStartedGame = false
 
     override func loadView() {
+        print("GameViewController loadView")
         // Create SKView as the main view
         skView = SKView()
-        skView.backgroundColor = .white
+        skView.backgroundColor = SKColor(red: 245/255, green: 245/255, blue: 235/255, alpha: 1.0)
         self.view = skView
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("GameViewController viewDidLoad")
         gameManager = GameManager(gameViewController: self)
     }
 
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("GameViewController viewWillAppear - bounds: \(view.bounds)")
+    }
 
-        // Start the game once we have proper bounds
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        print("GameViewController viewDidAppear - bounds: \(view.bounds)")
+
+        // Start game here to ensure view is fully laid out
         if !hasStartedGame && view.bounds.size.width > 0 && view.bounds.size.height > 0 {
             hasStartedGame = true
 
@@ -33,9 +41,14 @@ class GameViewController: UIViewController {
             #endif
             skView.ignoresSiblingOrder = true
 
-            // Now start the game - this will present the MainMenuScene
+            print("Starting game with bounds: \(view.bounds)")
             gameManager.startGame()
         }
+    }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        print("GameViewController viewDidLayoutSubviews - bounds: \(view.bounds)")
     }
 
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
